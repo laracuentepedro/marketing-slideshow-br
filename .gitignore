@@ -12,3 +12,5 @@ windsurf_deployment.yaml
 *.log
 
 node_modules
+*.png
+slides.pdf
