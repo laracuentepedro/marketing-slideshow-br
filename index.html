@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .viewer-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .content-frame {
+            flex: 1;
+            width: 100%;
+            border: none;
+            padding-top: 0;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+        }
+        .nav-button {
+            background-color: #002d62;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #004080;
+        }
+        .nav-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .page-indicator {
+            display: flex;
+            align-items: center;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-container">
+        <iframe id="contentFrame" class="content-frame" src="1.html"></iframe>
+        <div class="navigation">
+            <button id="prevButton" class="nav-button">← Back</button>
+            <div class="page-indicator">
+                <span id="currentPage">1</span> / <span id="totalPages">15</span>
+            </div>
+            <button id="nextButton" class="nav-button">Forward →</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentFrame = document.getElementById('contentFrame');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const currentPageElement = document.getElementById('currentPage');
+            
+            const totalFiles = 15;
+            let currentFileIndex = 1;
+            
+            // Initialize
+            updateNavigation();
+            
+            // Event listeners
+            prevButton.addEventListener('click', navigatePrevious);
+            nextButton.addEventListener('click', navigateNext);
+            
+            function navigatePrevious() {
+                if (currentFileIndex > 1) {
+                    currentFileIndex--;
+                    loadFile();
+                    updateNavigation();
+                }
+            }
+            
+            function navigateNext() {
+                if (currentFileIndex < totalFiles) {
+                    currentFileIndex++;
+                    loadFile();
+                    updateNavigation();
+                }
+            }
+            
+            function loadFile() {
+                contentFrame.src = `${currentFileIndex}.html`;
+                currentPageElement.textContent = currentFileIndex;
+            }
+            
+            function updateNavigation() {
+                prevButton.disabled = currentFileIndex === 1;
+                nextButton.disabled = currentFileIndex === totalFiles;
+            }
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowLeft') {
+                    navigatePrevious();
+                } else if (event.key === 'ArrowRight') {
+                    navigateNext();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

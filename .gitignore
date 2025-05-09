@@ -1,0 +1,12 @@
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Python HTTP server artifacts
+__pycache__/
+
+# Ignore deployment configs
+windsurf_deployment.yaml
+
+# Ignore logs
+*.log
