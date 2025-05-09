@@ -10,3 +10,5 @@ windsurf_deployment.yaml
 
 # Ignore logs
 *.log
+
+node_modules
