@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Promocional - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 25px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, minmax(120px, auto));
+            gap: 20px;
+            height: auto;
+            min-height: 540px;
+        }
+        .calendar-quarter {
+            grid-column: 1 / span 3;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .calendar-quarter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        .quarter-label {
+            width: 180px;
+            height: 100%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            padding: 15px;
+        }
+        .quarter-text {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+        .quarter-theme {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-align: center;
+        }
+        .q1-label {
+            background: linear-gradient(135deg, #1a8754 0%, #25b777 100%);
+        }
+        .q2-label {
+            background: linear-gradient(135deg, #0d6efd 0%, #3d8bfd 100%);
+        }
+        .q3-label {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffaa55 100%);
+        }
+        .q4-label {
+            background: linear-gradient(135deg, #dc3545 0%, #e35d6a 100%);
+        }
+        .campaigns-container {
+            display: flex;
+            flex: 1;
+            padding: 10px 15px;
+            overflow: visible;
+        }
+        .month-column {
+            flex: 1;
+            padding: 0 10px;
+            position: relative;
+        }
+        .month-column:not(:last-child):after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background-color: #eee;
+        }
+        .month-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .month-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            margin-right: 8px;
+            flex-shrink: 0;
+            color: white;
+        }
+        .q1-icon {
+            background-color: #1a8754;
+        }
+        .q2-icon {
+            background-color: #0d6efd;
+        }
+        .q3-icon {
+            background-color: #fd7e14;
+        }
+        .q4-icon {
+            background-color: #dc3545;
+        }
+        .month-name {
+            font-weight: 600;
+            color: #444;
+        }
+        .campaign-title {
+            font-weight: 700;
+            color: #002d62;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+        .campaign-title i {
+            margin-right: 6px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .campaign-description {
+            font-size: 0.8rem;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+            z-index: 1;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">CALENDARIO PROMOCIONAL</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Campañas Estratégicas Trimestrales</h2>
+            <div class="separator"></div>
+            
+            <div class="calendar-grid">
+                <!-- Q1 2026 -->
+                <div class="calendar-quarter">
+                    <div class="quarter-label q1-label">
+                        <div class="quarter-text">T1</div>
+                        <div class="quarter-theme">Lanzamiento</div>
+                    </div>
+                    <div class="campaigns-container">
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q1-icon">E</div>
+                                <div class="month-name">Enero</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-star"></i> "Devolvemos lo que mereces"
+                            </div>
+                            <div class="campaign-description">
+                                Evento de lanzamiento oficial, campaña masiva en medios y activación digital con incentivo por activación temprana.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q1-icon">F</div>
+                                <div class="month-name">Febrero</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-heart"></i> "Enamórate del Cashback"
+                            </div>
+                            <div class="campaign-description">
+                                Promoción especial San Valentín con cashback duplicado en restaurantes e influencers compartiendo experiencias.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q1-icon">M</div>
+                                <div class="month-name">Marzo</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-users"></i> "Cashback para toda la familia"
+                            </div>
+                            <div class="campaign-description">
+                                Promoción de tarjetas adicionales con activaciones en centros comerciales y webinars educativos sobre finanzas familiares.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q2 2026 -->
+                <div class="calendar-quarter">
+                    <div class="quarter-label q2-label">
+                        <div class="quarter-text">T2</div>
+                        <div class="quarter-theme">Crecimiento</div>
+                    </div>
+                    <div class="campaigns-container">
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q2-icon">A</div>
+                                <div class="month-name">Abril</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-shopping-basket"></i> "Tus compras diarias te devuelven más"
+                            </div>
+                            <div class="campaign-description">
+                                Enfoque en beneficios en supermercados y farmacias con alianzas y marketing contextual basado en ubicación.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q2-icon">M</div>
+                                <div class="month-name">Mayo</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-gift"></i> "Regala Cashback" 
+                            </div>
+                            <div class="campaign-description">
+                                Promoción especial para Día de las Madres con cashback incrementado en categorías específicas y concurso en redes sociales.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q2-icon">J</div>
+                                <div class="month-name">Junio</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-briefcase"></i> "Impulsa tu Negocio con Cashback"
+                            </div>
+                            <div class="campaign-description">
+                                Lanzamiento promocional de variante Business con eventos con cámaras de comercio y webinars para emprendedores.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q3 2026 -->
+                <div class="calendar-quarter">
+                    <div class="quarter-label q3-label">
+                        <div class="quarter-text">T3</div>
+                        <div class="quarter-theme">Optimización</div>
+                    </div>
+                    <div class="campaigns-container">
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q3-icon">J</div>
+                                <div class="month-name">Julio</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-umbrella-beach"></i> "Cashback Vacacional"
+                            </div>
+                            <div class="campaign-description">
+                                Beneficios especiales en hoteles y restaurantes nacionales con alianzas con sector turístico local.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q3-icon">A</div>
+                                <div class="month-name">Agosto</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-graduation-cap"></i> "Vuelta a Clases con Cashback"
+                            </div>
+                            <div class="campaign-description">
+                                Promoción en útiles escolares y uniformes con alianzas con librerías y tiendas especializadas.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q3-icon">S</div>
+                                <div class="month-name">Septiembre</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-flag"></i> "Celebra la Independencia Financiera"
+                            </div>
+                            <div class="campaign-description">
+                                Cashback especial en productos nacionales con campaña patriótica vinculada a finanzas personales.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q4 2026 -->
+                <div class="calendar-quarter">
+                    <div class="quarter-label q4-label">
+                        <div class="quarter-text">T4</div>
+                        <div class="quarter-theme">Consolidación</div>
+                    </div>
+                    <div class="campaigns-container">
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q4-icon">O</div>
+                                <div class="month-name">Octubre</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-heartbeat"></i> "Cashback para tu Salud"
+                            </div>
+                            <div class="campaign-description">
+                                Enfoque en beneficios en farmacias y servicios médicos con educación sobre prevención financiera y salud.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q4-icon">N</div>
+                                <div class="month-name">Noviembre</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-shopping-cart"></i> "Black Friday Cashback"
+                            </div>
+                            <div class="campaign-description">
+                                Cashback duplicado en compras de Black Friday con campaña digital intensiva y alianzas con retailers.
+                            </div>
+                        </div>
+                        <div class="month-column">
+                            <div class="month-header">
+                                <div class="month-icon q4-icon">D</div>
+                                <div class="month-name">Diciembre</div>
+                            </div>
+                            <div class="campaign-title">
+                                <i class="fas fa-tree"></i> "Navidad Cashback"
+                            </div>
+                            <div class="campaign-description">
+                                Programa especial de financiamiento navideño con campañas emotivas y concurso "La mejor Navidad con Cashback".
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

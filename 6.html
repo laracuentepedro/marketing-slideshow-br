@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tácticas Promocionales de Precios - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 30px;
+        }
+        .quarter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .quarter-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            height: 260px;
+        }
+        .quarter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .quarter-header {
+            padding: 16px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .quarter-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .quarter-title {
+            flex: 1;
+        }
+        .quarter-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .quarter-theme {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .q1-header {
+            background: linear-gradient(135deg, #1a8754 0%, #25b777 100%);
+        }
+        .q2-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #3d8bfd 100%);
+        }
+        .q3-header {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffaa55 100%);
+        }
+        .q4-header {
+            background: linear-gradient(135deg, #dc3545 0%, #e35d6a 100%);
+        }
+        .quarter-content {
+            padding: 20px;
+        }
+        .promo-item {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .promo-icon {
+            background: #f0f4f8;
+            color: #002d62;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .promo-text {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #002d62;
+            font-weight: 600;
+        }
+        .circle-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -30px;
+        }
+        .q1-decoration {
+            background: #1a8754;
+        }
+        .q2-decoration {
+            background: #0d6efd;
+        }
+        .q3-decoration {
+            background: #fd7e14;
+        }
+        .q4-decoration {
+            background: #dc3545;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">TÁCTICAS PROMOCIONALES DE PRECIOS</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Estrategia Trimestral de Ofertas</h2>
+            <div class="separator"></div>
+            
+            <div class="quarter-grid">
+                <!-- Q1 2026 -->
+                <div class="quarter-card">
+                    <div class="quarter-header q1-header">
+                        <div class="quarter-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="quarter-title">
+                            <div class="quarter-name">T1 2026</div>
+                            <div class="quarter-theme">Lanzamiento</div>
+                        </div>
+                    </div>
+                    <div class="quarter-content">
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">Exoneración de cuota anual</span> para todos los solicitantes durante el primer año
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">Tasa de interés preferencial</span> (5 puntos porcentuales menos) durante los primeros 3 meses
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="promo-text">
+                                Campaña "Devolvemos lo que mereces" con incentivos de activación temprana
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-decoration q1-decoration"></div>
+                </div>
+                
+                <!-- Q2 2026 -->
+                <div class="quarter-card">
+                    <div class="quarter-header q2-header">
+                        <div class="quarter-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="quarter-title">
+                            <div class="quarter-name">T2 2026</div>
+                            <div class="quarter-theme">Expansión</div>
+                        </div>
+                    </div>
+                    <div class="quarter-content">
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">50% de descuento en cuota anual</span> para referidos de clientes actuales
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">Financiamiento sin intereses a 3 meses</span> para compras superiores a RD$10,000
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="promo-text">
+                                Alianzas con cadenas de supermercados para cashback mejorado en "compras diarias"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-decoration q2-decoration"></div>
+                </div>
+                
+                <!-- Q3 2026 -->
+                <div class="quarter-card">
+                    <div class="quarter-header q3-header">
+                        <div class="quarter-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="quarter-title">
+                            <div class="quarter-name">T3 2026</div>
+                            <div class="quarter-theme">Profundización</div>
+                        </div>
+                    </div>
+                    <div class="quarter-content">
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="promo-text">
+                                Programa <span class="highlight">"Cashback Duplicado"</span> en categorías seleccionadas durante un mes
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">Exoneración de cargos por emisión</span> de tarjetas adicionales
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div class="promo-text">
+                                Beneficios especiales en hoteles y restaurantes nacionales con "Cashback Vacacional"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-decoration q3-decoration"></div>
+                </div>
+                
+                <!-- Q4 2026 -->
+                <div class="quarter-card">
+                    <div class="quarter-header q4-header">
+                        <div class="quarter-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="quarter-title">
+                            <div class="quarter-name">T4 2026</div>
+                            <div class="quarter-theme">Temporada Alta</div>
+                        </div>
+                    </div>
+                    <div class="quarter-content">
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">"Black Friday Cashback"</span>: Aumento al 10% en cashback para compras durante el fin de semana de Black Friday
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-gifts"></i>
+                            </div>
+                            <div class="promo-text">
+                                <span class="highlight">Programa Navideño</span>: Financiamiento especial con 0% interés a 6 meses en comercios seleccionados
+                            </div>
+                        </div>
+                        <div class="promo-item">
+                            <div class="promo-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <div class="promo-text">
+                                Concurso "La mejor Navidad con Cashback" con premios exclusivos para usuarios activos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-decoration q4-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

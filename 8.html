@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Go-To-Market - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 30px;
+        }
+        .phases-container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+        .phase-row {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .phase-connector {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #002d62, #004080);
+            z-index: 1;
+        }
+        .phase-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #002d62;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 40px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.3);
+            position: relative;
+            z-index: 2;
+            margin-top: 10px;
+        }
+        .phase-content {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .phase-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            color: white;
+        }
+        .phase-1-header {
+            background: linear-gradient(90deg, #1a8754 0%, #25b777 100%);
+        }
+        .phase-2-header {
+            background: linear-gradient(90deg, #0d6efd 0%, #3d8bfd 100%);
+        }
+        .phase-3-header {
+            background: linear-gradient(90deg, #dc3545 0%, #e35d6a 100%);
+        }
+        .phase-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .phase-time {
+            font-size: 1rem;
+            opacity: 0.9;
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        .phase-body {
+            padding: 20px;
+        }
+        .strategy-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .strategy-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            color: #444;
+        }
+        .strategy-icon {
+            width: 28px;
+            height: 28px;
+            background-color: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #002d62;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+            z-index: 1;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            background-color: #002d62;
+            z-index: 1;
+        }
+        .shape-1 {
+            width: 180px;
+            height: 180px;
+            top: 150px;
+            right: 100px;
+        }
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            bottom: 100px;
+            left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">MODELO GO-TO-MARKET</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Estrategia de Crecimiento por Fases</h2>
+            <div class="separator"></div>
+            
+            <div class="phases-container">
+                <div class="phase-connector"></div>
+                
+                <!-- Phase 1 -->
+                <div class="phase-row">
+                    <div class="phase-circle">1</div>
+                    <div class="phase-content">
+                        <div class="phase-header phase-1-header">
+                            <div class="phase-name">Fase de Lanzamiento</div>
+                            <div class="phase-time">T1 2026</div>
+                        </div>
+                        <div class="phase-body">
+                            <ul class="strategy-list">
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-users"></i></div>
+                                    <div>Enfoque en clientes actuales de Banreservas con alto potencial</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-building"></i></div>
+                                    <div>Activación prioritaria de sucursales premium y plataforma digital</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-user-tie"></i></div>
+                                    <div>Capacitación intensiva a ejecutivos de cuenta y personal de sucursales</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 -->
+                <div class="phase-row">
+                    <div class="phase-circle">2</div>
+                    <div class="phase-content">
+                        <div class="phase-header phase-2-header">
+                            <div class="phase-name">Fase de Expansión</div>
+                            <div class="phase-time">T2 2026</div>
+                        </div>
+                        <div class="phase-body">
+                            <ul class="strategy-list">
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-door-open"></i></div>
+                                    <div>Apertura completa de todos los canales de distribución</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-bullhorn"></i></div>
+                                    <div>Implementación de campañas masivas para captar nuevo mercado</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-laptop"></i></div>
+                                    <div>Habilitación de solicitudes 100% digitales (end-to-end)</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 -->
+                <div class="phase-row">
+                    <div class="phase-circle">3</div>
+                    <div class="phase-content">
+                        <div class="phase-header phase-3-header">
+                            <div class="phase-name">Fase de Optimización</div>
+                            <div class="phase-time">T3-T4 2026</div>
+                        </div>
+                        <div class="phase-body">
+                            <ul class="strategy-list">
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div>Refinamiento de canales según desempeño</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-award"></i></div>
+                                    <div>Incentivos diferenciados por canal basados en calidad de clientes adquiridos</div>
+                                </li>
+                                <li class="strategy-item">
+                                    <div class="strategy-icon"><i class="fas fa-random"></i></div>
+                                    <div>Implementación de estrategias de venta cruzada (cross-selling)</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principios Promocionales - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 30px;
+        }
+        .principles-container {
+            display: flex;
+            margin-bottom: 40px;
+        }
+        .principles-column {
+            flex: 1;
+            padding-right: 30px;
+        }
+        .principle-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #002d62;
+            position: relative;
+            overflow: hidden;
+        }
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .principle-icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #002d62;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        .principle-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 12px;
+        }
+        .principle-description {
+            color: #555;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        .market-share-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-left: 30px;
+            width: 40%;
+            position: relative;
+        }
+        .market-share-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .market-share-item {
+            margin-bottom: 25px;
+        }
+        .market-share-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .market-share-text {
+            color: #555;
+            font-weight: 600;
+        }
+        .market-share-value {
+            color: #002d62;
+            font-weight: 700;
+        }
+        .market-share-bar {
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .market-share-progress {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #002d62, #004080);
+        }
+        .market-share-progress.gold {
+            background: linear-gradient(90deg, #d4af37, #f9d423);
+        }
+        .market-share-progress.blue-light {
+            background: linear-gradient(90deg, #3a5998, #5b7fd6);
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+        .card-decoration {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #002d62;
+            opacity: 0.04;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">PRINCIPIOS PROMOCIONALES</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Estrategia y Enfoque Promocional</h2>
+            <div class="separator"></div>
+            
+            <div class="flex">
+                <div class="principles-column">
+                    <!-- Principle 1 -->
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="principle-title">Beneficios Tangibles</div>
+                        <div class="principle-description">
+                            Enfoque en la comunicación clara del valor real y cuantificable que ofrece la Tarjeta Cashback Banreservas, resaltando el retorno financiero inmediato para el cliente.
+                        </div>
+                        <div class="card-decoration"></div>
+                    </div>
+                    
+                    <!-- Principle 2 -->
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="principle-title">Simplicidad y Transparencia</div>
+                        <div class="principle-description">
+                            Destacar la facilidad de uso y comprensión del programa de cashback, diferenciándonos de esquemas complejos de la competencia mediante una comunicación directa y honesta.
+                        </div>
+                        <div class="card-decoration"></div>
+                    </div>
+                    
+                    <!-- Principle 3 -->
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="principle-title">Storytelling Financiero</div>
+                        <div class="principle-description">
+                            Crear narrativas que conecten emocionalmente, mostrando cómo el cashback impacta positivamente la vida cotidiana de los usuarios y contribuye a su bienestar económico.
+                        </div>
+                        <div class="card-decoration"></div>
+                    </div>
+                </div>
+                
+                <div class="market-share-container">
+                    <div class="market-share-title">Market Share Promocional Deseado</div>
+                    
+                    <!-- Share of Voice -->
+                    <div class="market-share-item">
+                        <div class="market-share-label">
+                            <div class="market-share-text">Share of Voice en Tarjetas de Crédito</div>
+                            <div class="market-share-value">35%</div>
+                        </div>
+                        <div class="market-share-bar">
+                            <div class="market-share-progress" style="width: 35%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Share of Voice in Cashback -->
+                    <div class="market-share-item">
+                        <div class="market-share-label">
+                            <div class="market-share-text">SOV en Segmento Cashback</div>
+                            <div class="market-share-value">50%</div>
+                        </div>
+                        <div class="market-share-bar">
+                            <div class="market-share-progress gold" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Digital Financial Media -->
+                    <div class="market-share-item">
+                        <div class="market-share-label">
+                            <div class="market-share-text">Presencia en Medios Digitales Financieros</div>
+                            <div class="market-share-value">40%</div>
+                        </div>
+                        <div class="market-share-bar">
+                            <div class="market-share-progress blue-light" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <div class="flex items-center">
+                            <div class="mr-3 text-blue-500">
+                                <i class="fas fa-info-circle text-xl"></i>
+                            </div>
+                            <div class="text-sm text-blue-700">
+                                Los objetivos de market share son significativamente mayores que la participación actual de Banreservas en productos similares, lo que refleja nuestro enfoque agresivo en el segmento cashback.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

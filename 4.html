@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Innovación - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 30px;
+        }
+        .timeline {
+            position: relative;
+            padding-top: 10px;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 140px;
+            width: 4px;
+            background: linear-gradient(to bottom, #002d62, #004080);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 180px;
+            margin-bottom: 50px;
+            min-height: 120px;
+        }
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 120px;
+            background: #002d62;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 45, 98, 0.3);
+        }
+        .timeline-date-quarter {
+            font-size: 1.5rem;
+        }
+        .timeline-date-year {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 132px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d4af37;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #002d62;
+        }
+        .timeline-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #d4af37;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .timeline-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f4f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #002d62;
+            font-size: 1.2rem;
+        }
+        .timeline-description {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .timeline-highlight {
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: #f8f5e6;
+            border-left: 3px solid #d4af37;
+            color: #333;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">PLAN DE INNOVACIÓN</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Roadmap de Nuevos Productos y Servicios</h2>
+            <div class="separator"></div>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Q2 2026 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="timeline-date-quarter">Q2</div>
+                        <div class="timeline-date-year">2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="timeline-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            Cashback Digital
+                        </div>
+                        <div class="timeline-description">
+                            Versión virtual de la tarjeta con beneficios adicionales en compras online, integrando tecnología de tokenización para mayor seguridad en transacciones digitales.
+                        </div>
+                        <div class="timeline-highlight">
+                            <i class="fas fa-percentage mr-2"></i> 7% cashback en comercio electrónico
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q3 2026 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="timeline-date-quarter">Q3</div>
+                        <div class="timeline-date-year">2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="timeline-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            Cashback Mujer
+                        </div>
+                        <div class="timeline-description">
+                            Beneficios exclusivos para mujeres, como descuentos en productos y servicios femeninos.
+                        </div>
+                        <div class="timeline-highlight">
+                            <i class="fas fa-magic mr-2"></i> Beneficios exclusivos para mujeres
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q4 2026 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="timeline-date-quarter">Q4</div>
+                        <div class="timeline-date-year">2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="timeline-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            Cashback+Puntos
+                        </div>
+                        <div class="timeline-description">
+                            Sistema híbrido que permite al cliente elegir entre recibir cashback o acumular puntos para canje en establecimientos premium asociados, maximizando la flexibilidad.
+                        </div>
+                        <div class="timeline-highlight">
+                            <i class="fas fa-star mr-2"></i> Canje de puntos en comercios exclusivos y de lujo
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q1 2027 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="timeline-date-quarter">Q1</div>
+                        <div class="timeline-date-year">2027</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="timeline-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            Cashback Familia
+                        </div>
+                        <div class="timeline-description">
+                            Programa innovador que permite agrupar el cashback de tarjetas adicionales en una sola cuenta para maximizar beneficios, ideal para hogares que buscan optimizar sus finanzas.
+                        </div>
+                        <div class="timeline-highlight">
+                            <i class="fas fa-piggy-bank mr-2"></i> Beneficios compartidos multiplicados por cada miembro
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

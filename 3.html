@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Productos - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            height: 580px;
+            gap: 25px;
+        }
+        .card {
+            width: 32%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+            max-width: 380px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            padding: 24px 20px;
+            color: white;
+            text-align: center;
+        }
+        .platinum-header {
+            background: linear-gradient(135deg, #333333 0%, #666666 100%);
+        }
+        .gold-header {
+            background: linear-gradient(135deg, #d4af37 0%, #f9d423 100%);
+        }
+        .business-header {
+            background: linear-gradient(135deg, #002d62 0%, #004080 100%);
+        }
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        .benefit-icon {
+            min-width: 28px;
+            text-align: center;
+            margin-right: 12px;
+            color: #002d62;
+            margin-top: 2px;
+        }
+        .benefit-text {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.4;
+        }
+        .cashback-rate {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #002d62;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            padding: 18px 25px;
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+        }
+        .annual-fee {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .target-audience {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .contribution-label {
+            position: absolute;
+            bottom: 90px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #002d62;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .contribution-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            position: absolute;
+            bottom: 78px;
+            left: 25px;
+            right: 25px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .contribution-fill {
+            height: 100%;
+            background-color: #002d62;
+        }
+        .contribution-text {
+            position: absolute;
+            bottom: 58px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #002d62;
+            font-size: 0.9rem;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">PORTFOLIO DE PRODUCTOS</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Nuestras Variantes de Tarjeta Cashback</h2>
+            <div class="separator"></div>
+            
+            <div class="cards-container">
+                <!-- Cashback Platinum Card -->
+                <div class="card">
+                    <div class="card-header platinum-header">
+                        <div class="card-title">Cashback Platinum</div>
+                        <div class="text-sm opacity-80">Premium Experience</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-store"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">5% cashback</span> en supermercados, farmacias y combustible
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">3% cashback</span> en restaurantes y delivery
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">1% cashback</span> en todas las demás compras
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-credit-card"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Límite de crédito:</span> Desde RD$100,000
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Dirigida a:</span> Profesionales establecidos y familias de ingresos medios-altos
+                            </div>
+                        </div>
+                        
+                        <div class="contribution-label">Contribución al Margen</div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 40%"></div>
+                        </div>
+                        <div class="contribution-text">40% del margen total</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="annual-fee">
+                            <span>Cuota:</span>
+                            <span>RD$3,500</span>
+                        </div>
+                        <div class="target-audience text-center">Exonerada primer año</div>
+                    </div>
+                </div>
+                
+                <!-- Cashback Gold Card -->
+                <div class="card">
+                    <div class="card-header gold-header">
+                        <div class="card-title">Cashback Gold</div>
+                        <div class="text-sm opacity-80">Smart Value</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-store"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">4% cashback</span> en supermercados, farmacias y combustible
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">2% cashback</span> en restaurantes y delivery
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">0.5% cashback</span> en todas las demás compras
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-credit-card"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Límite de crédito:</span> Desde RD$50,000
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Dirigida a:</span> Jóvenes profesionales y familias de ingresos medios
+                            </div>
+                        </div>
+                        
+                        <div class="contribution-label">Contribución al Margen</div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 35%"></div>
+                        </div>
+                        <div class="contribution-text">35% del margen total</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="annual-fee">
+                            <span>Cuota:</span>
+                            <span>RD$2,000</span>
+                        </div>
+                        <div class="target-audience text-center">Exonerada primer año</div>
+                    </div>
+                </div>
+                
+                <!-- Cashback Business Card -->
+                <div class="card">
+                    <div class="card-header business-header">
+                        <div class="card-title">Cashback Business</div>
+                        <div class="text-sm opacity-80">Business Growth</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">5% cashback</span> en combustible y telecomunicaciones
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-plane"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">3% cashback</span> en viajes y restaurantes
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="benefit-text">
+                                <span class="cashback-rate">1% cashback</span> en todas las demás compras
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-credit-card"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Límite de crédito:</span> Desde RD$150,000
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="benefit-text">
+                                <span class="font-semibold">Beneficios empresariales:</span> Reportes categorizados, tarjetas adicionales sin costo
+                            </div>
+                        </div>
+                        
+                        <div class="contribution-label">Contribución al Margen</div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 25%"></div>
+                        </div>
+                        <div class="contribution-text">25% del margen total</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="annual-fee">
+                            <span>Cuota:</span>
+                            <span>RD$4,000</span>
+                        </div>
+                        <div class="target-audience text-center">Exonerada primer año</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

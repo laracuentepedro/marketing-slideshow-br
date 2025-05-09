@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canales de Distribución - Tarjeta Cashback Banreservas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-header {
+            background: linear-gradient(90deg, #002d62 0%, #004080 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .slide-content {
+            flex: 1;
+            padding: 30px 40px 40px;
+            position: relative;
+        }
+        .separator {
+            width: 50px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 10px 0 30px;
+        }
+        .distribution-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: space-between;
+        }
+        .distribution-card {
+            width: calc(33.333% - 17px);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .distribution-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        .platinum-header {
+            background: linear-gradient(135deg, #333333 0%, #666666 100%);
+        }
+        .gold-header {
+            background: linear-gradient(135deg, #d4af37 0%, #f9d423 100%);
+        }
+        .business-header {
+            background: linear-gradient(135deg, #002d62 0%, #004080 100%);
+        }
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .strategy-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid #002d62;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            color: #002d62;
+            font-weight: 600;
+        }
+        .channel-title {
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        .channel-icon {
+            width: 28px;
+            height: 28px;
+            background-color: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #002d62;
+        }
+        .channel-list {
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
+        .channel-item {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: #555;
+        }
+        .channel-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: #d4af37;
+            border-radius: 50%;
+        }
+        .chart-container {
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .chart-title {
+            text-align: center;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .chart-bars {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+        .chart-bar {
+            width: 50px;
+            background: #002d62;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+        }
+        .platinum-bar-1 { height: 50%; background: #4a5568; }
+        .platinum-bar-2 { height: 30%; background: #2d3748; }
+        .platinum-bar-3 { height: 20%; background: #1a202c; }
+        
+        .gold-bar-1 { height: 40%; background: #f6ad55; }
+        .gold-bar-2 { height: 35%; background: #ed8936; }
+        .gold-bar-3 { height: 15%; background: #dd6b20; }
+        .gold-bar-4 { height: 10%; background: #c05621; }
+        
+        .business-bar-1 { height: 60%; background: #3182ce; }
+        .business-bar-2 { height: 25%; background: #2b6cb0; }
+        .business-bar-3 { height: 15%; background: #2c5282; }
+        
+        .bar-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .bar-name {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #555;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #d4af37 0%, rgba(212, 175, 55, 0) 70%);
+            opacity: 0.08;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(0deg);
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-title">CANALES DE DISTRIBUCIÓN</div>
+            <div class="text-sm">Tarjeta Cashback Banreservas 2026</div>
+        </div>
+        
+        <div class="slide-content">
+            <div class="corner-decoration top-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+            
+            <h2 class="text-2xl font-bold text-gray-800">Estrategia de Distribución por Producto</h2>
+            <div class="separator"></div>
+            
+            <div class="distribution-container">
+                <!-- Cashback Platinum Distribution -->
+                <div class="distribution-card">
+                    <div class="card-header platinum-header">
+                        <div class="card-title">Cashback Platinum</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="strategy-box">
+                            <i class="fas fa-bullseye mr-2"></i> Enfoque en experiencia exclusiva y atención personalizada
+                        </div>
+                        
+                        <div class="channel-title">
+                            <div class="channel-icon"><i class="fas fa-route"></i></div>
+                            Canales Primarios
+                        </div>
+                        <div class="channel-list">
+                            <div class="channel-item">Sucursales premium con espacios VIP</div>
+                            <div class="channel-item">Banca privada con ejecutivos personales</div>
+                            <div class="channel-item">Plataforma digital con interfaz exclusiva</div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-title">Distribución Objetivo por Canal</div>
+                            <div class="chart-bars">
+                                <div class="chart-bar platinum-bar-1">
+                                    <div class="bar-label">50%</div>
+                                    <div class="bar-name">Sucursales Premium</div>
+                                </div>
+                                <div class="chart-bar platinum-bar-2">
+                                    <div class="bar-label">30%</div>
+                                    <div class="bar-name">Digital</div>
+                                </div>
+                                <div class="chart-bar platinum-bar-3">
+                                    <div class="bar-label">20%</div>
+                                    <div class="bar-name">Banca Privada</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cashback Gold Distribution -->
+                <div class="distribution-card">
+                    <div class="card-header gold-header">
+                        <div class="card-title">Cashback Gold</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="strategy-box">
+                            <i class="fas fa-bullseye mr-2"></i> Máxima accesibilidad y facilidad de aplicación
+                        </div>
+                        
+                        <div class="channel-title">
+                            <div class="channel-icon"><i class="fas fa-route"></i></div>
+                            Canales Primarios
+                        </div>
+                        <div class="channel-list">
+                            <div class="channel-item">Todas las sucursales a nivel nacional</div>
+                            <div class="channel-item">Plataforma digital optimizada</div>
+                            <div class="channel-item">App móvil con proceso simplificado</div>
+                            <div class="channel-item">Telemarketing con equipo especializado</div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-title">Distribución Objetivo por Canal</div>
+                            <div class="chart-bars">
+                                <div class="chart-bar gold-bar-1">
+                                    <div class="bar-label">40%</div>
+                                    <div class="bar-name">Digital</div>
+                                </div>
+                                <div class="chart-bar gold-bar-2">
+                                    <div class="bar-label">35%</div>
+                                    <div class="bar-name">Sucursales</div>
+                                </div>
+                                <div class="chart-bar gold-bar-3">
+                                    <div class="bar-label">15%</div>
+                                    <div class="bar-name">App Móvil</div>
+                                </div>
+                                <div class="chart-bar gold-bar-4">
+                                    <div class="bar-label">10%</div>
+                                    <div class="bar-name">Telemarketing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cashback Business Distribution -->
+                <div class="distribution-card">
+                    <div class="card-header business-header">
+                        <div class="card-title">Cashback Business</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="strategy-box">
+                            <i class="fas fa-bullseye mr-2"></i> Atención especializada con asesoría financiera incluida
+                        </div>
+                        
+                        <div class="channel-title">
+                            <div class="channel-icon"><i class="fas fa-route"></i></div>
+                            Canales Primarios
+                        </div>
+                        <div class="channel-list">
+                            <div class="channel-item">Banca empresarial con gestores dedicados</div>
+                            <div class="channel-item">Ejecutivos especializados en visitas in situ</div>
+                            <div class="channel-item">Plataforma digital empresarial</div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-title">Distribución Objetivo por Canal</div>
+                            <div class="chart-bars">
+                                <div class="chart-bar business-bar-1">
+                                    <div class="bar-label">60%</div>
+                                    <div class="bar-name">Ejecutivos Especializados</div>
+                                </div>
+                                <div class="chart-bar business-bar-2">
+                                    <div class="bar-label">25%</div>
+                                    <div class="bar-name">Digital Empresarial</div>
+                                </div>
+                                <div class="chart-bar business-bar-3">
+                                    <div class="bar-label">15%</div>
+                                    <div class="bar-name">Sucursales</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
